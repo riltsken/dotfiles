@@ -59,21 +59,3 @@ set smartcase
 set tabstop=4 softtabstop=4 shiftwidth=4 expandtab
 set hlsearch " highlight search
 set scrolloff=2 " give some space b/w top and bottom for cursor
-
-" function to strip all trailing spaces
-function! <SID>StripTrailingWhitespaces()
-" Preparation: save last search, and cursor position.
-    let _s=@/
-    let l = line(".")
-    let c = col(".")
-" Do the business:
-    %s/\s\+$//e
-" Clean up: restore previous search history, and cursor position
-    let @/=_s
-    call cursor(l, c)
-endfunction
-
-" supposed to use ctags for jumping to defintions of identifiers
-set tags+=tags;
-
-
