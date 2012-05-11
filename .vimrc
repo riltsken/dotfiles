@@ -1,5 +1,4 @@
 call pathogen#infect()
-call pathogen#helptags()
 
 " Show a line across the screen to indicate line
 set cursorline
@@ -10,6 +9,9 @@ set cursorline
 
 " For full syntax highlighting:
 syntax enable
+
+" syntax highlight soy files as html
+au BufNewFile,BufRead *.soy set filetype=html
 
 " a better status line
 set laststatus=2
@@ -22,6 +24,9 @@ set statusline+=%{&encoding},                " encoding
 set statusline+=%{&fileformat}]              " file format
 set statusline+=%=                           " right align
 set statusline+=%-14.(%l,%c%V%)\ %<%P        " offset
+
+" map .less to .css
+nnoremap ,m :w <BAR> !lessc % > %:t:r.css<CR><space>
 
 set foldmethod=indent
 " recolor the fold bg/fg
@@ -52,3 +57,21 @@ set smartcase
 set tabstop=4 softtabstop=4 shiftwidth=4 expandtab
 set hlsearch " highlight search
 set scrolloff=2 " give some space b/w top and bottom for cursor
+
+" function to strip all trailing spaces
+function! <SID>StripTrailingWhitespaces()
+" Preparation: save last search, and cursor position.
+    let _s=@/
+    let l = line(".")
+    let c = col(".")
+" Do the business:
+    %s/\s\+$//e
+" Clean up: restore previous search history, and cursor position
+    let @/=_s
+    call cursor(l, c)
+endfunction
+
+" supposed to use ctags for jumping to defintions of identifiers
+set tags+=tags;
+
+
