@@ -30,9 +30,6 @@ set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
-" map .less to .css
-nnoremap ,m :w <BAR> !lessc % > %:t:r.css<CR><space>
-
 set foldmethod=indent
 " recolor the fold bg/fg
 highlight Folded ctermfg=yellow ctermbg=0
