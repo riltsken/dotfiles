@@ -13,6 +13,9 @@ syntax enable
 " syntax highlight soy files as html
 au BufNewFile,BufRead *.soy set filetype=html
 
+" set terminal to use 256 colors for hex color highlighting in css
+set t_Co=256
+
 " a better status line
 set laststatus=2
 set statusline=
