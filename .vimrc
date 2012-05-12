@@ -16,6 +16,11 @@ au BufNewFile,BufRead *.soy set filetype=html
 " set terminal to use 256 colors for hex color highlighting in css
 set t_Co=256
 
+" better hilighting with 256 colors
+highlight Search ctermfg=yellow ctermbg=darkgrey
+highlight PmenuThumb ctermfg=yellow ctermbg=darkgrey
+highlight Visual ctermfg=yellow ctermbg=darkgrey
+
 " a better status line
 set laststatus=2
 set statusline=
