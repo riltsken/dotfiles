@@ -61,6 +61,10 @@ map [ :tabp<cr>
 " quick quit on saved files
 map q :q<cr>
 
+" highlight characters passed col 80
+highlight OverColLimit term=bold cterm=bold
+au BufRead,BufNewFile * match OverColLimit '\%>80v.\+'
+
 set smarttab
 set nowrap
 set smartcase
