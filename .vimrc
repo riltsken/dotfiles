@@ -7,19 +7,27 @@ set cursorline
 " but doesnt work with folds :(
 " au BufReadPost * if line("'\"") > 0|if line("'\"") <= line("$")|exe("norm '\"")|else|exe "norm $"|endif|endif
 
-" For full syntax highlighting:
+" For full syntax hiing:
 syntax enable
 
-" syntax highlight soy files as html
-au BufNewFile,BufRead *.soy set filetype=html
+" syntax hi soy files as html
+au BufNewFile,BufRead *.soy set filetype=html shiftwidth=2
+au BufNewFile,BufRead *.js set shiftwidth=2
+au BufNewFile,BufRead *.rb set shiftwidth=2
 
-" set terminal to use 256 colors for hex color highlighting in css
+" set terminal to use 256 colors for hex color hiing in css
 set t_Co=256
 
 " better hilighting with 256 colors
-highlight Search ctermfg=yellow ctermbg=darkgrey
-highlight PmenuThumb ctermfg=yellow ctermbg=darkgrey
-highlight Visual ctermfg=yellow ctermbg=darkgrey
+hi Search ctermfg=yellow ctermbg=darkgrey
+hi PmenuThumb ctermfg=yellow ctermbg=darkgrey
+hi Visual ctermfg=yellow ctermbg=darkgrey
+
+" ctrl+p or ctrl+n menu colors
+hi Pmenu ctermfg=black ctermbg=white
+hi PmenuSel ctermfg=black ctermbg=226
+hi PmenuSbar ctermfg=black ctermbg=white
+hi PmenuThumb ctermfg=black ctermbg=white
 
 " a better status line
 set laststatus=2
@@ -40,19 +48,22 @@ set statusline+=%*
 
 set foldmethod=indent
 " recolor the fold bg/fg
-highlight Folded ctermfg=yellow ctermbg=0
+hi Folded ctermfg=yellow ctermbg=0
 " Map ctrl + left to fold
 map <C-Left> zm
 " Map ctrl + right to unfold
 map <C-Right> zO
 
 " Fuzzy file search
-map \ :CommandT<cr>
-let g:CommandTMaxHeight=15
+map \0 :CtrlP .<cr>
+map \1 :CtrlP ~/work/reach/reach/<cr>
+map \2 :CtrlP ~/work/reach/reach/cloudkick/webapp/site_media/js<cr>
+map \3 :CtrlP ~/work/reach/reach/cloudkick/webapp/site_media/css<cr>
+map \4 :CtrlP ~/work/reach/reach/cloudkick/webapp/templates<cr>
 
 " show trailing whitespace
 set list listchars=trail:.,tab:>.
-highlight SpecialKey ctermfg=White ctermbg=Green
+hi SpecialKey ctermfg=White ctermbg=Green
 
 " switch between tabs
 map ] :tabn<cr>
@@ -61,13 +72,15 @@ map [ :tabp<cr>
 " quick quit on saved files
 map q :q<cr>
 
-" highlight characters passed col 80
-highlight OverColLimit term=bold cterm=bold
+" hi characters passed col 80
+hi OverColLimit term=bold cterm=bold
 au BufRead,BufNewFile * match OverColLimit '\%>80v.\+'
 
+set autoindent
 set smarttab
 set nowrap
 set smartcase
 set tabstop=4 softtabstop=4 shiftwidth=4 expandtab
-set hlsearch " highlight search
+set hlsearch " hi search
 set scrolloff=2 " give some space b/w top and bottom for cursor
+
