@@ -9,6 +9,10 @@
 "             See http://sam.zoy.org/wtfpl/COPYING for more details.
 "
 "============================================================================
+
+" This checker requires efm_perl.pl, which is distributed with Vim version
+" seven and greater, as far as I know.
+
 if exists("loaded_perl_syntax_checker")
     finish
 endif
@@ -19,10 +23,12 @@ if !executable("perl")
     finish
 endif
 
-let s:checker = 'perl ' . shellescape(expand('<sfile>:p:h') . '/efm_perl.pl') . ' -c'
+if !exists("g:syntastic_perl_efm_program")
+    let g:syntastic_perl_efm_program = 'perl '.$VIMRUNTIME.'/tools/efm_perl.pl -c'
+endif
 
 function! SyntaxCheckers_perl_GetLocList()
-    let makeprg = s:checker . ' ' . shellescape(expand('%'))
+    let makeprg = g:syntastic_perl_efm_program . ' ' . shellescape(expand('%'))
     let errorformat =  '%f:%l:%m'
 
     return SyntasticMake({ 'makeprg': makeprg, 'errorformat': errorformat })

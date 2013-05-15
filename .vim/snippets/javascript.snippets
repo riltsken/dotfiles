@@ -81,9 +81,30 @@ snippet describe
 		beforeEach(function() {
 		});
 
-		afterEach(function() {
-		});
-
 		it('${3}', function() {
 		});
 	});
+snippet it
+	it('${1}', function() {
+	
+	});
+snippet require
+	goog.require('${1}');
+snippet provide
+	goog.provide('${1}');
+snippet @inherit
+	/** @inheritDoc */
+snippet @constructor
+	/**
+	 * @constructor
+	 * @extends {'${1}'}
+	 * @param {'${2}'} '${3}'
+	 * @param {'${4}'} '${5}'
+	 */
+snippet @doc
+	/**
+	 * @private
+	 * @param {'${1}'} '${2}'
+	 * @param {'${3}'} '${4}'
+	 * @return {'${5}'}
+	 */

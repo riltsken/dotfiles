@@ -1,3 +1,7 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =1
-let g:netrw_dirhist_1='/home/samuel/.vim/bundle'
+let g:netrw_dirhist_cnt =5
+let g:netrw_dirhist_1='/home/samuel/work/reach-chef/cookbooks/cloud_monitoring'
+let g:netrw_dirhist_2='/home/samuel/work/reach-chef/spec/reach-cloudmonitoring'
+let g:netrw_dirhist_3='/home/samuel/work/reach-chef/data_bags/users'
+let g:netrw_dirhist_4='/home/samuel/work/raxvm/reach/reach-chef/cookbooks/chef-solo-search/libraries/search'
+let g:netrw_dirhist_5='/home/samuel/work/reach/reach/qetest/pinot/spec/permissions'

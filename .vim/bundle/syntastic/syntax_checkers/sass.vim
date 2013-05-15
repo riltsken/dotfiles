@@ -19,14 +19,17 @@ if !executable("sass")
     finish
 endif
 
-"use compass imports if available
-let s:imports = ""
-if executable("compass")
-    let s:imports = "--compass"
-endif
+let g:syntastic_sass_imports = 0
 
 function! SyntaxCheckers_sass_GetLocList()
-    let makeprg='sass '.s:imports.' --check '.shellescape(expand('%'))
+    "use compass imports if available
+    if g:syntastic_sass_imports == 0 && executable("compass")
+        let g:syntastic_sass_imports = "--compass"
+    else
+        let g:syntastic_sass_imports = ""
+    endif
+
+    let makeprg='sass '.g:syntastic_sass_imports.' --check '.shellescape(expand('%'))
     let errorformat = '%ESyntax %trror:%m,%C        on line %l of %f,%Z%.%#'
     let errorformat .= ',%Wwarning on line %l:,%Z%m,Syntax %trror on line %l: %m'
     let loclist = SyntasticMake({ 'makeprg': makeprg, 'errorformat': errorformat })
